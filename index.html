@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="css/squeeze.min.css" rel="stylesheet"/>
+		<link href="css/font.awesome.min.css" rel="stylesheet"/>
+			
+		<style>
+			body{
+				color:#a0a0a0;
+				background:#EEEEEE;
+			}
+			
+			a{
+				color:#a0a0a0;
+				
+			}
+			#header{
+				background:#E7C72F;
+				padding:20px;
+			}
+			
+			#menu{
+				background:white;
+				color:#38414B;
+			}
+			
+			.sq-main{
+				padding-top:150px;
+			}
+			
+			.nav > li{
+				cursor:pointer;
+				color:white;
+				font-size:20px;
+			}
+			
+			ul.menu li{
+				padding:40px;
+				font-size:30px;
+				cursor:pointer;
+				border-bottom: 1px solid #c0c0c0;
+			}
+			
+			
+			ul.menu li:active{
+				background:#38414B;
+				color:#FFF;
+			}
+			
+			
+			h1{
+				color:#57636E;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<script src="js/squeeze.min.js"></script>
+		<div class="header t-c sq-top table" id="header">
+			<ul class="tr nav">
+				<li class="td t-l"><a href="http://www.lnnovate.com"><img src="css/images/logo.png"/></a></li>
+				<li class="td t-r" data-toggle="menu"><span data-capture="1" class="fa fa-bars"></span></li>
+			</ul>
+		</div>
+		<div class="sq-modal" id="modal" data-toggle="menu/close"></div>
+		<div class="sq-right" id="menu"  data-toggle="menu/close">
+			<ul class="menu">
+				<li data-toggle="home">Home</li>
+				<li data-toggle="contact">Contact</li>
+			</ul>
+		</div>
+		
+		<div class="sq-main t-c" id="contact">
+			<span class="fa fa-coffee" style="font-size:150px"></span><br/><br/><br/>
+			Phone: (+63) 933-417-3725
+			Email: mark.b.mendoza@gmail.com
+		</div>
+		<div class="sq-main t-c" id="main">
+			<h1>Your Web and Mobile Development Partner</h1>
+			<div>We take advantage of the following technologies</div>			
+			<div class="table">
+				<ul class="tr">
+					<li class="td"><img src="css/images/php.png"/></li>
+					<li class="td"><img src="css/images/html5.png"/></li>
+					<li class="td"><img src="css/images/mysql.png"/></li>
+				</ul>
+			</div>
+			<div style="background:white;"><img src="css/images/xdk.png"/></div>
+			
+			<br/>
+			<br/>
+			<h1>Sample projects</h1>
+			<br/>
+			<br/>
+			<div>
+				<a target="_blank" href="https://play.google.com/store/apps/details?id=com.lnnovate.vocabulary">
+					English Vocabulary Test
+				</a>
+			</div>
+			<br/>
+			<br/>
+		</div>
+		<script>
+		
+			extend('callback',{
+				'main/hide' : function(){
+					init('callback').execute('menu/close');
+					sq.select('.sq-main').removeClass('sq-main-in');
+				},
+				'contact' : function(){
+					init('callback').execute('main/hide');
+					sq.select('#contact').addClass('sq-main-in');
+				},
+				'home' : function(){
+					init('callback').execute('main/hide');
+					sq.select('#header').addClass('sq-top-in');
+					sq.select('#main').addClass('sq-main-in');
+				},
+				'menu' : function(){
+					sq.select('#modal').addClass('sq-modal-in');
+					sq.select('#menu').addClass('sq-right-in');
+				},
+				'menu/close' : function(){
+					sq.select('#modal').removeClass('sq-modal-in');
+					sq.select('#menu').removeClass('sq-right-in');
+				}
+			});
+			
+			setTimeout(function(){
+				init('callback').execute('home');
+			},500);
+			
+			
+		</script>
+	</body>
+</html>
